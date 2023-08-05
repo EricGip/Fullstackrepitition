@@ -1,0 +1,10 @@
+.Appbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+}
+
+.Box {
+    display: inline-block;
+}
