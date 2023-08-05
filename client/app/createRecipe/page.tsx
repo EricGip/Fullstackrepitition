@@ -9,6 +9,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
+import { Container } from "@mui/material";
 
 
 
@@ -18,6 +19,8 @@ export default function createRecipe() {
     const [description, setDescription] = useState("Description");
     const [serving, setServing] = useState("Servings");
     const [ingredients, setIngredients] = useState("Ingredients");
+    const [difficulty, setDifficulty] = useState("Difficulty")
+    const [time, setTime] = useState("Estimated time")
     const [steps, setSteps] = useState("Steps");
     const [notes, setNotes] = useState("Notes");
 
@@ -42,9 +45,19 @@ export default function createRecipe() {
         console.log(ingredients);
     }
 
+    function handleDifficultyChange(e: ChangeEvent<HTMLInputElement>) {
+        setDifficulty(e.target.value); 
+        console.log(steps);
+    }
+
+    function handleTimeChange(e: ChangeEvent<HTMLInputElement>) {
+        setTime(e.target.value); 
+        console.log(time);
+    }
+
     function handleStepsChange(e: ChangeEvent<HTMLInputElement>) {
         setSteps(e.target.value); 
-        console.log(steps);
+        console.log(difficulty);
     }
 
     function handleNoteChange(e: ChangeEvent<HTMLInputElement>) {
@@ -54,40 +67,43 @@ export default function createRecipe() {
 
     return (
         <div>
-            <Button variant="contained"> Save  </Button>
-            <Button variant="contained"> Cancel </Button>
-            <br></br>
-            <br></br>
-            <br></br>
-
-            <FormControl variant="standard" sx={{ m: 1, minWidth: 160 }}>
-                <InputLabel id="demo-simple-select-label">Private?</InputLabel>
-                <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    label="Private"
-                >
-                    <MenuItem >Private</MenuItem>
-                    <MenuItem >Friends list</MenuItem>
-                    <MenuItem >Public</MenuItem>
-                </Select>
-            </FormControl>
+            <Container>
+                <Button variant="contained"> Save  </Button>
+                <Button variant="contained"> Cancel </Button>
+                <br />
+                <FormControl variant="standard" sx={{ m: 1, minWidth: 160 }}>
+                    <InputLabel id="demo-simple-select-label">Private?</InputLabel>
+                    <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        label="Private"
+                        >
+                        <MenuItem >Private</MenuItem>
+                        <MenuItem >Friends list</MenuItem>
+                        <MenuItem >Public</MenuItem>
+                    </Select>
+                </FormControl>
 
 
-            <TextField className={styles.textBox} id="outlined-basic" label="Title" variant="outlined" onChange={handleTitleChange} />
-            <br></br>
-            <TextField className={styles.textBox} id="outlined-basic" label="Description" variant="outlined" onChange={handleDescriptionChange} />
-            <br></br>
-            <TextField className={styles.textBox} id="outlined-basic" label="Servings" variant="outlined" onChange={handleServingChange} />
-            <br></br>
-            <TextField className={styles.textBox} id="outlined-basic" label="Ingredients" variant="outlined" onChange={handleIngredientsChange} />
-            <br></br>
-            <TextField className={styles.textBox} id="outlined-basic" label="Steps" variant="outlined" onChange={handleStepsChange} />
-            <br></br>
-            <TextField className={styles.textBox} id="outlined-basic" label="Notes" variant="outlined" onChange={handleNoteChange} />
-
-            <Button variant="contained"> Save  </Button>
-            <Button variant="contained"> Cancel </Button>
+                <TextField className={styles.textBox} id="outlined-basic" label="Title" variant="outlined" onChange={handleTitleChange} />
+                <br></br>
+                <TextField className={styles.textBox} id="outlined-basic" label="Description" variant="outlined" onChange={handleDescriptionChange} />
+                <br></br>
+                <TextField className={styles.textBox} id="outlined-basic" label="Servings" variant="outlined" onChange={handleServingChange} />
+                <br></br>
+                <TextField className={styles.textBox} id="outlined-basic" label="Ingredients" variant="outlined" onChange={handleIngredientsChange} />
+                <br></br>
+                <TextField className={styles.textBox} id="outlined-basic" label="Difficulty rating" variant="outlined" onChange={handleDifficultyChange} />
+                <br></br>
+                <TextField className={styles.textBox} id="outlined-basic" label="Estiated total time" variant="outlined" onChange={handleTimeChange} />
+                <br></br>
+                <TextField className={styles.textBox} id="outlined-basic" label="Steps" variant="outlined" onChange={handleStepsChange} />
+                <br></br>
+                <TextField className={styles.textBox} id="outlined-basic" label="Notes" variant="outlined" onChange={handleNoteChange} />
+                <br></br>
+                <Button variant="contained"> Save  </Button>
+                <Button variant="contained"> Cancel </Button>
+            </Container>
         </div>
     )
 }
