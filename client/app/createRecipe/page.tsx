@@ -52,8 +52,6 @@ export default function createRecipe() {
         console.log(notes);
     }
 
-
-
     return (
         <div>
             <Button variant="contained"> Save  </Button>
